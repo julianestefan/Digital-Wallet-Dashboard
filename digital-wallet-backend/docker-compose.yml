@@ -1,0 +1,36 @@
+version: '3'
+services: 
+  db:
+    platform: linux/x86_64
+    env_file: ./.env
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: $POSTGRES_ROOT_PASSWORD
+      POSTGRES_USER: $POSTGRES_USER
+      POSTGRES_DB: $POSTGRES_DATABASE
+    ports:
+      - $POSTGRES_LOCAL_PORT:$POSTGRES_DOCKER_PORT
+    volumes:
+      - ./db:/var/lib/postgresql/data
+  api: 
+    depends_on: 
+      - db
+    build: .
+    ports:
+      - $NODE_LOCAL_PORT:$NODE_DOCKER_PORT
+    volumes:
+      - .:/app
+      - /app/node_modules
+    stdin_open: true
+    tty: true
+    environment:
+      - PORT=$NODE_DOCKER_PORT
+      - DB_HOST=db
+      - DB_USER=$POSTGRES_USER
+      - DB_PASSWORD=$POSTGRES_ROOT_PASSWORD
+      - DB_NAME=$POSTGRES_DATABASE
+      - DB_PORT=$POSTGRES_DOCKER_PORT
+      - JWT_SECRET=dsadasdasdadas
+volumes: 
+  db:
