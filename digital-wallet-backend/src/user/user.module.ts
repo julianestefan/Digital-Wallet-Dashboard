@@ -4,7 +4,7 @@ import { PassportModule } from '@nestjs/passport';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { UserController } from './user.controller';
 import { User } from './user.entity';
-import { UserService } from './user.service';
+import { JwtStrategy, LocalStrategy, UserService } from './user.service';
 
 @Module({
   imports: [
@@ -16,6 +16,10 @@ import { UserService } from './user.service';
     }),
   ],
   controllers: [UserController],
-  providers: [UserService],
+  providers: [
+    UserService,
+    LocalStrategy,
+    JwtStrategy
+  ],
 })
 export class UserModule {}

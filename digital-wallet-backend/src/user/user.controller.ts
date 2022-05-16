@@ -1,11 +1,13 @@
 import {
   Body,
+  ClassSerializerInterceptor,
   Controller,
   Get,
   HttpCode,
   Post,
   Request,
   UseGuards,
+  UseInterceptors,
 } from '@nestjs/common';
 import {
   ApiBearerAuth,
@@ -30,17 +32,19 @@ export class UserController {
   @ApiBody({ type: LoginBodyDTO })
   @ApiResponse({ type: LoginRespomseDTO })
   @UseGuards(LocalAuthGuard)
+  @UseInterceptors(ClassSerializerInterceptor)
   async login(@Request() req) {
-    return this.userService.login(req.user);
+    return await this.userService.login(req.user);
   }
 
   @Post('create')
-  @HttpCode(201)
   @Public()
+  @HttpCode(201)
   @ApiOperation({ summary: 'Create user' })
   @ApiResponse({ type: User })
+  @UseInterceptors(ClassSerializerInterceptor)
   async create(@Body() body: LoginBodyDTO) {
-    return this.userService.create(body);
+    return await this.userService.create(body);
   }
 
   @Get('profile')
@@ -48,6 +52,7 @@ export class UserController {
   @ApiOperation({ summary: 'Get authenticated user data' })
   @ApiBearerAuth()
   @ApiResponse({ type: User })
+  @UseInterceptors(ClassSerializerInterceptor)
   async profile(@Request() req) {
     return req.user;
   }

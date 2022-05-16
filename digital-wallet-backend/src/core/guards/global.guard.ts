@@ -6,29 +6,18 @@ import { PUBLIC_KEY } from '../decorators/public.decorator';
 
 @Injectable()
 export class GlobalGuard extends JwtAuthGuard {
-    constructor(private readonly reflector: Reflector) {
-        super()
-    }
+  constructor(private readonly reflector: Reflector) {
+    super();
+  }
 
-    async canActivate(context: ExecutionContext): Promise<boolean> {
+  async canActivate(context: ExecutionContext): Promise<boolean> {
+    const isPublic = this.reflector.get(PUBLIC_KEY, context.getHandler());
 
-        const isPublic = this.reflector.get(
-            PUBLIC_KEY,
-            context.getHandler(),
-        )
+    if (isPublic) return true;
 
-        if (isPublic) {
-            return true
-        }
+    // call AuthGuard in order to ensure user is injected in request
+    const baseGuardResult = await super.canActivate(context);
 
-        // call AuthGuard in order to ensure user is injected in request
-        const baseGuardResult = await super.canActivate(context);
-
-        if (!baseGuardResult) {
-            // unsuccessful authentication return false
-            return false;
-        }
-
-    }
-
+    return !!baseGuardResult;
+  }
 }

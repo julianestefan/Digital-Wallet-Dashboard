@@ -1,9 +1,14 @@
 import { ApiProperty } from "@nestjs/swagger";
 import { IsAlphanumeric, Length } from "class-validator";
+import { User } from "./user.entity";
 
 
 export class LoginRespomseDTO  {
+    @ApiProperty()
     accessToken: string;
+
+    @ApiProperty()
+    user: User
 }
 
 export class LoginBodyDTO  {
