@@ -29,15 +29,13 @@ describe('UserService', () => {
           users.find((user) => user.username === options.where.username),
         ),
     ),
-    save: jest.fn((user: LoginBodyDTO) =>
-      Promise.resolve(
-        plainToClass(User, {
-          ...user,
-          id: 2,
-          createdAt: new Date(),
-        }),
-      ),
-    ),
+    create: jest.fn((user: LoginBodyDTO) => plainToClass(User, user)),
+    save: jest.fn((user: User) => {
+      user.id = 2;
+      user.createdAt = new Date();
+
+      return Promise.resolve(user);
+    }),
   };
 
   beforeEach(async () => {
@@ -79,8 +77,16 @@ describe('UserService', () => {
     expect(user.createdAt).toBe(users[0].createdAt);
   });
 
-  it('should return null if wrong credentials are provided', async () => {
+  it('should return null if wrong password is provided ', async () => {
     const user = await service.validateUser('test', 'test1');
+
+    expect(user).toBeNull();
+
+    expect(mockedRepo.findOne).toHaveBeenCalled();
+  });
+
+  it('should return null if wrong username is provided ', async () => {
+    const user = await service.validateUser('test1', 'test');
 
     expect(user).toBeNull();
 
@@ -108,12 +114,13 @@ describe('UserService', () => {
     const hashSpy = jest.spyOn(bcrypt, 'hash');
 
     const user = await service.create(newUserData);
-    
+
+    expect(mockedRepo.create).toHaveBeenCalled();
     expect(mockedRepo.save).toHaveBeenCalled();
     expect(hashSpy).toHaveBeenCalled();
 
     expect(user).toBeDefined();
     expect(user.username).toBe(newUserData.username);
-    expect(typeof user.password).toBe("string");
+    expect(typeof user.password).toBe('string');
   });
 });
