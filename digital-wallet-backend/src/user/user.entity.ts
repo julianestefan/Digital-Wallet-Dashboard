@@ -18,7 +18,6 @@ export class User {
   username: string;
 
   @Column({ select: false })
-  @Exclude()
   password: string;
 
   @CreateDateColumn({ name: 'created_at' })

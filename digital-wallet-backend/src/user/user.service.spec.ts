@@ -96,13 +96,13 @@ describe('UserService', () => {
   it('should validate user if correct credentials are provided', async () => {
     const user = await service.validateUser('test', 'test');
 
-    expect(user).toBeDefined();
+    expect(mockedRepo.findOne).toHaveBeenCalled();
+
+    expect(user).toBeTruthy();
 
     expect(user.id).toBe(users[0].id);
     expect(user.username).toBe(users[0].username);
     expect(user.createdAt).toBe(users[0].createdAt);
-
-    expect(mockedRepo.findOne).toHaveBeenCalled();
   });
 
   it('should create a new user with corresponding data and hashing the password', async () => {

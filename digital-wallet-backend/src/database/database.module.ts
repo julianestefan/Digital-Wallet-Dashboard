@@ -11,7 +11,18 @@ const options: TypeOrmModuleOptions = {
   database: process.env.DB_NAME,
   synchronize: true,
   entities: [User],
+  ssl: process.env.NODE_ENV === 'production',
+  extra:
+    process.env.NODE_ENV === 'production'
+      ? {
+          ssl: {
+            rejectUnauthorized: false,
+          },
+        }
+      : {},
 };
+
+console.log(options);
 
 @Module({ imports: [TypeOrmModule.forRoot(options)] })
 export class DatabaseModule {}
