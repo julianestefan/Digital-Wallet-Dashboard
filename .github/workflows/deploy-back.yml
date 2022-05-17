@@ -22,10 +22,8 @@ jobs:
       with:
         node-version: 14.17.0
 
-    - name: Move to backend folder 
-      run: cd digital-wallet-backend
-
     - name: Install NPM packages
+      run: cd digital-wallet-backend
       run: npm ci
     
     - name: Run tests
