@@ -12,6 +12,7 @@ import {
   ApiBearerAuth,
   ApiBody,
   ApiOperation,
+  ApiParam,
   ApiResponse,
   ApiTags,
 } from '@nestjs/swagger';
@@ -46,8 +47,11 @@ export class ExchangeRateController {
 
   @Get(':base_currency')
   @HttpCode(200)
-  @ApiOperation({ summary: 'Get each record with base currency passed as parameter' })
+  @ApiOperation({
+    summary: 'Get each record with base currency passed as parameter',
+  })
   @ApiResponse({ isArray: true, type: ExchangeRate })
+  @ApiParam({ name: 'base_currency', enum: Currency, enumName: 'Currencies' })
   async profile(@Param('base_currency') currency: Currency) {
     return await this.exchangeRateService.getBaseCurrencyRates(currency);
   }
