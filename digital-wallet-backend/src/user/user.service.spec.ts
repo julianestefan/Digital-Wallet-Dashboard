@@ -6,9 +6,9 @@ import { JwtModule } from '@nestjs/jwt';
 import * as bcrypt from 'bcryptjs';
 import * as jwt from 'jsonwebtoken';
 
-import { User } from './user.entity';
+import { User } from './entities/user.entity';
 import { UserService } from './user.service';
-import { LoginBodyDTO } from './user.dto';
+import { LoginBodyDTO } from './dto/login.dto';
 
 describe('UserService', () => {
   let service: UserService;

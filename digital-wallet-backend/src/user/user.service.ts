@@ -7,8 +7,8 @@ import { PassportStrategy } from '@nestjs/passport';
 import { Repository } from 'typeorm';
 import * as bcrypt from 'bcryptjs';
 
-import { User } from './user.entity';
-import { LoginBodyDTO } from './user.dto';
+import { User } from './entities/user.entity';
+import { LoginBodyDTO } from './dto/login.dto';
 
 @Injectable()
 export class UserService {

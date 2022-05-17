@@ -5,9 +5,10 @@ import { UserModule } from './user/user.module';
 import { WalletModule } from './wallet/wallet.module';
 import { DatabaseModule } from './database/database.module';
 import { GlobalGuard } from './core/guards/global.guard';
+import { ExchangeRateModule } from './exchange-rate/exchange-rate.module';
 
 @Module({
-  imports: [WalletModule, UserModule, DatabaseModule],
+  imports: [WalletModule, UserModule, ExchangeRateModule, DatabaseModule],
   controllers: [],
   providers: [
     {

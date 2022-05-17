@@ -1,8 +1,6 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule, TypeOrmModuleOptions } from '@nestjs/typeorm';
-import { join } from 'path';
-import { User } from 'src/user/user.entity';
-console.log( 'hola', join(__dirname, '..', '**', '*.entity.js'))
+
 const options: TypeOrmModuleOptions = {
   type: 'postgres',
   host: process.env.DB_HOST,
@@ -11,7 +9,7 @@ const options: TypeOrmModuleOptions = {
   password: process.env.DB_PASSWORD,
   database: process.env.DB_NAME,
   synchronize: true,
-  entities: ["dist/**/*.entity.{ts,js}"],
+  entities: ["dist/**/entities/*.entity.{ts,js}"],
   ssl: process.env.NODE_ENV === 'production',
   extra:
     process.env.NODE_ENV === 'production'

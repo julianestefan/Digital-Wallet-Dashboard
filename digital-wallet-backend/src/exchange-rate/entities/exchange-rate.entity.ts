@@ -4,11 +4,14 @@ import {
   Column,
   PrimaryGeneratedColumn,
   CreateDateColumn,
+  Index,
+  Unique,
 } from 'typeorm';
 
-import { Currency } from './enums/currency.enum';
+import { Currency } from '../enums/currency.enum';
 
 @Entity('exchange_rates')
+@Unique("rate_currencies", ["baseCurrency", "convertedCurrency"]) 
 export class ExchangeRate {
   @PrimaryGeneratedColumn()
   @ApiProperty()
@@ -19,6 +22,7 @@ export class ExchangeRate {
     enum: Currency,
     default: Currency.ETH,
   })
+  @Index()
   @ApiProperty()
   baseCurrency: Currency;
 

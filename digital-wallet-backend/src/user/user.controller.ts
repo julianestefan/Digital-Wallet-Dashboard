@@ -14,13 +14,15 @@ import {
   ApiBody,
   ApiOperation,
   ApiResponse,
+  ApiTags,
 } from '@nestjs/swagger';
 import { Public } from 'src/core/decorators/public.decorator';
 import { LocalAuthGuard } from 'src/core/guards/local.guard';
-import { LoginBodyDTO, LoginRespomseDTO } from './user.dto';
-import { User } from './user.entity';
+import { LoginBodyDTO, LoginRespomseDTO } from './dto/login.dto';
+import { User } from './entities/user.entity';
 import { UserService } from './user.service';
 
+@ApiTags('User')
 @Controller('user')
 export class UserController {
   constructor(private userService: UserService) {}
