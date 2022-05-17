@@ -12,7 +12,7 @@ jobs:
   test:
     name: test
     runs-on: ubuntu-latest
-    
+
     steps:
     - name: Checkout code
       uses: actions/checkout@v2
@@ -23,9 +23,11 @@ jobs:
         node-version: 14.17.0
 
     - name: Install NPM packages
-      run: cd digital-wallet-backend && npm ci
+      working-directory: ./digital-wallet-backend
+      run: npm ci
     
     - name: Run tests
+      working-directory: ./digital-wallet-backend
       run: npm run test
 
   build:
