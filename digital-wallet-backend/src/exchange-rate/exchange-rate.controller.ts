@@ -23,12 +23,12 @@ import { Currency } from './enums/currency.enum';
 import { ExchangeRateService } from './exchange-rate.service';
 
 @ApiTags('Exchange Rates')
+@ApiBearerAuth()
 @Controller('exchange-rate')
 export class ExchangeRateController {
   constructor(private readonly exchangeRateService: ExchangeRateService) {}
 
   @Post('create')
-  @Public()
   @HttpCode(201)
   @ApiOperation({ summary: 'Create exchange rate' })
   @ApiResponse({ type: ExchangeRate })
@@ -37,7 +37,6 @@ export class ExchangeRateController {
   }
 
   @Patch('value')
-  @Public()
   @HttpCode(200)
   @ApiOperation({ summary: 'Update exchange rate value' })
   @ApiResponse({ type: ExchangeRate })
@@ -48,7 +47,6 @@ export class ExchangeRateController {
   @Get(':base_currency')
   @HttpCode(200)
   @ApiOperation({ summary: 'Get each record with base currency passed as parameter' })
-  @ApiBearerAuth()
   @ApiResponse({ isArray: true, type: ExchangeRate })
   async profile(@Param('base_currency') currency: Currency) {
     return await this.exchangeRateService.getBaseCurrencyRates(currency);
