@@ -21,5 +21,7 @@ const options: TypeOrmModuleOptions = {
   entities: [User],
 };
 
+console.log(options);
+
 @Module({ imports: [TypeOrmModule.forRoot(options)] })
 export class DatabaseModule {}
