@@ -11,24 +11,36 @@ import {
 import { Currency } from '../enums/currency.enum';
 
 @Entity('exchange_rates')
-@Unique("rate_currencies", ["baseCurrency", "convertedCurrency"]) 
+@Unique('rate_currencies', ['baseCurrency', 'convertedCurrency'])
 export class ExchangeRate {
   @PrimaryGeneratedColumn()
   @ApiProperty()
   id: number;
 
+  @ApiProperty({
+    name: 'base_currency',
+    enum: Currency,
+    enumName: 'Currencies',
+    default: Currency.ETH
+  })
   @Column({
     name: 'base_currency',
     enum: Currency,
+    enumName: 'Currencies',
     default: Currency.ETH,
   })
   @Index()
-  @ApiProperty()
   baseCurrency: Currency;
 
+  @ApiProperty({
+    name: 'converted_currency',
+    enum: Currency,
+    enumName: 'Currencies',
+  })
   @Column({
     name: 'converted_currency',
     enum: Currency,
+    enumName: 'Currencies',
   })
   convertedCurrency: Currency;
 
@@ -37,6 +49,7 @@ export class ExchangeRate {
     type: 'decimal',
     precision: 15,
   })
+  @ApiProperty()
   value: number;
 
   @CreateDateColumn({ name: 'created_at' })

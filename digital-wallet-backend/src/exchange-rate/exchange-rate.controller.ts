@@ -51,7 +51,7 @@ export class ExchangeRateController {
     summary: 'Get each record with base currency passed as parameter',
   })
   @ApiResponse({ isArray: true, type: ExchangeRate })
-  @ApiParam({ name: 'base_currency', enum: Currency, enumName: 'currencies' })
+  @ApiParam({ name: 'base_currency', enum: Currency, enumName: 'Currencies' })
   async profile(@Param('base_currency') currency: Currency) {
     return await this.exchangeRateService.getBaseCurrencyRates(currency);
   }

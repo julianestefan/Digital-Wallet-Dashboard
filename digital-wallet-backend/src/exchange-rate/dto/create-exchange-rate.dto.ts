@@ -1,13 +1,13 @@
-import { ApiProperty } from "@nestjs/swagger"
-import { IsEnum, IsPositive } from "class-validator"
-import { Currency } from "../enums/currency.enum"
+import { ApiProperty } from '@nestjs/swagger';
+import { IsEnum, IsPositive } from 'class-validator';
+import { Currency } from '../enums/currency.enum';
 
 export class CreateExchangeRateDTO {
-    @ApiProperty({enum: Currency})
-    @IsEnum(Currency)
-    convertedCurrency: Currency;
+  @ApiProperty({ enum: Currency, enumName: 'Currencies' })
+  @IsEnum(Currency)
+  convertedCurrency: Currency;
 
-    @ApiProperty()
-    @IsPositive()
-    value: number;
+  @ApiProperty()
+  @IsPositive()
+  value: number;
 }
