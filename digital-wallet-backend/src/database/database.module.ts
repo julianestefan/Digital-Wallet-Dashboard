@@ -13,16 +13,14 @@ const generalOptions: TypeOrmModuleOptions = {
   entities: [User],
 };
 
-const productionOptions = {
-  ssl: {
-      rejectUnauthorized: true
-  }
-}
+const productionOptions: TypeOrmModuleOptions = {
+  ssl: { rejectUnauthorized: false },
+};
 
-const options = process.env.NODE_ENV === 'production' ?
-  { ...generalOptions, ...productionOptions } :
-  generalOptions;
-
+const options =
+  process.env.NODE_ENV === 'production'
+    ? { ...generalOptions, ...productionOptions }
+    : generalOptions;
 
 @Module({ imports: [TypeOrmModule.forRoot(options)] })
 export class DatabaseModule {}
