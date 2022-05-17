@@ -23,8 +23,7 @@ jobs:
         node-version: 14.17.0
 
     - name: Install NPM packages
-      run: cd digital-wallet-backend
-      run: npm ci
+      run: cd digital-wallet-backend && npm ci
     
     - name: Run tests
       run: npm run test
