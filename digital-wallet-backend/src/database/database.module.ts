@@ -4,7 +4,7 @@ import { User } from 'src/user/user.entity';
 
 const connectionOptions: TypeOrmModuleOptions = process.env.DATABASE_URL
   ? {
-      url: process.env.DATABASE_URL,
+      url: process.env.DATABASE_URL + '?sslmode=require',
     }
   : {
       type: 'postgres',
