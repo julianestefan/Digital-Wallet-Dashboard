@@ -1,6 +1,5 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule, TypeOrmModuleOptions } from '@nestjs/typeorm';
-import { User } from 'src/user/user.entity';
 
 const options: TypeOrmModuleOptions = {
   type: 'postgres',
@@ -10,7 +9,7 @@ const options: TypeOrmModuleOptions = {
   password: process.env.DB_PASSWORD,
   database: process.env.DB_NAME,
   synchronize: true,
-  entities: [User],
+  entities: ["dist/**/entities/*.entity.{ts,js}"],
   ssl: process.env.NODE_ENV === 'production',
   extra:
     process.env.NODE_ENV === 'production'
@@ -22,7 +21,6 @@ const options: TypeOrmModuleOptions = {
       : {},
 };
 
-console.log(options);
 
 @Module({ imports: [TypeOrmModule.forRoot(options)] })
 export class DatabaseModule {}
