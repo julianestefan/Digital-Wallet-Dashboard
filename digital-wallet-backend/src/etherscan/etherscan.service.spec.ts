@@ -29,11 +29,11 @@ describe('EtherscanService', () => {
   });
 
   it('should trhow an exception if invalid address is provided', async () => {
-    await expect(service.getAddressData('as')).rejects.toThrow(BadRequestException);
+    await expect(service.getAccountBalanceByAddress('as')).rejects.toThrow(BadRequestException);
   });
 
   it('should trhow an exception if invalid address is provided', async () => {
-    const result = await service.getAddressData(
+    const result = await service.getAccountBalanceByAddress(
       '0xeB2629a2734e272Bcc07BDA959863f316F4bD4Cf',
     );
 

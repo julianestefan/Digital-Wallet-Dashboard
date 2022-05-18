@@ -10,11 +10,9 @@ export class EtherscanService {
     this.api = api.init(process.env.ETHERSCAN_API_KEY);
   }
 
-  async getAddressData(address: string) {
-    if( !isEthereumAddress(address)) throw new BadRequestException();
+  async getAccountBalanceByAddress(address: string) {
+    if (!isEthereumAddress(address)) throw new BadRequestException();
 
-    const result = await this.api.account.balance(address);
-
-    return result;
+    return await this.api.account.balance(address);
   }
 }

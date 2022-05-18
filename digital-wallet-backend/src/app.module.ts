@@ -6,9 +6,16 @@ import { WalletModule } from './wallet/wallet.module';
 import { DatabaseModule } from './database/database.module';
 import { GlobalGuard } from './core/guards/global.guard';
 import { ExchangeRateModule } from './exchange-rate/exchange-rate.module';
+import { EtherscanModule } from './etherscan/etherscan.module';
 
 @Module({
-  imports: [WalletModule, UserModule, ExchangeRateModule, DatabaseModule],
+  imports: [
+    WalletModule,
+    UserModule,
+    ExchangeRateModule,
+    DatabaseModule,
+    EtherscanModule,
+  ],
   controllers: [],
   providers: [
     {
