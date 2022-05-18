@@ -34,5 +34,6 @@ services:
       - DB_NAME=$POSTGRES_DATABASE
       - DB_PORT=$POSTGRES_DOCKER_PORT
       - JWT_SECRET=dsadasdasdadas
+      - ETHERSCAN_API_KEY=$ETHERSCAN_API_KEY
 volumes: 
   db:
