@@ -23,7 +23,7 @@ export class UserWallet {
   walletId: number;
 
   @ApiProperty()
-  @ManyToOne((tpye) => Wallet, { cascade: true })
+  @ManyToOne((tpye) => Wallet, { cascade: true, eager: true })
   @JoinColumn({ name: 'wallet_id' })
   wallet: Wallet;
 
