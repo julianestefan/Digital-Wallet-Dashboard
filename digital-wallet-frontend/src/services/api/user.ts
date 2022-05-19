@@ -6,8 +6,8 @@ export const login = async (data: LoginBodyDTO) => {
     "/user/login",
     data
   );
-
-  localStorage.setItem("token", response.data.accessToken);
+  
+  localStorage.setItem("token", response.data.access_token);
 
   return response;
 };

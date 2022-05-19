@@ -5,7 +5,7 @@ export interface User {
 }
 
 export interface LoginRespomseDTO {
-  accessToken: string;
+  access_token: string;
   user: User;
 }
 

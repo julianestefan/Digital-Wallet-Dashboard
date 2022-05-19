@@ -1,3 +1,7 @@
+export interface CreateUserWalletDTO {
+  address: string;
+}
+
 export interface UpdateUserWalletFavoriteDTO {
   id: number;
   isFavorite: boolean;

@@ -10,10 +10,11 @@ export const actionLogin =
     dispatch(startLoading());
     try {
       const response = await login({ username, password });
+      
       dispatch({
         type: AuthType.LOGIN,
         payload: {
-          token: response.data.accessToken,
+          token: response.data.access_token,
           user: response.data.user,
         },
       });
