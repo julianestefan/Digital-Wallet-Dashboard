@@ -6,9 +6,18 @@ import { WalletModule } from './wallet/wallet.module';
 import { DatabaseModule } from './database/database.module';
 import { GlobalGuard } from './core/guards/global.guard';
 import { ExchangeRateModule } from './exchange-rate/exchange-rate.module';
+import { EtherscanModule } from './etherscan/etherscan.module';
+import { ScheduleModule } from '@nestjs/schedule';
 
 @Module({
-  imports: [WalletModule, UserModule, ExchangeRateModule, DatabaseModule],
+  imports: [
+    WalletModule,
+    UserModule,
+    ExchangeRateModule,
+    DatabaseModule,
+    EtherscanModule,
+    ScheduleModule.forRoot()
+  ],
   controllers: [],
   providers: [
     {
