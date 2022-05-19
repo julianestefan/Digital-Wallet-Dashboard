@@ -12,15 +12,20 @@ import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlin
 import { Accordion } from "@mui/material";
 import { UserWallet } from "../../../../../constants/dto/wallet.dto";
 import { memo } from "react";
-import WalletDetails from './wallet-details.ts'
+import WalletDetails from "./wallet-details.ts";
+import { ExchangeRate } from "../../../../../constants/dto/exchange-rate.dto";
 
 interface UserWalletListItemProps {
   userWallet: UserWallet;
+  exchangeRates: ExchangeRate[];
 }
 
-const UserWalletListItem = ({ userWallet }: UserWalletListItemProps) => {
+const UserWalletListItem = ({
+  userWallet,
+  exchangeRates,
+}: UserWalletListItemProps) => {
   return (
-    <Accordion style={{margin: '15px 0'}} >
+    <Accordion style={{ margin: "15px 0" }}>
       <AccordionSummary
         expandIcon={<ExpandMoreIcon />}
         aria-controls="panel1a-content"
@@ -43,7 +48,10 @@ const UserWalletListItem = ({ userWallet }: UserWalletListItemProps) => {
         </Grid>
       </AccordionSummary>
       <AccordionDetails>
-      <WalletDetails wallet={userWallet.wallet} />
+        <WalletDetails
+          exchangeRates={exchangeRates}
+          wallet={userWallet.wallet}
+        />
       </AccordionDetails>
     </Accordion>
   );
