@@ -12,6 +12,7 @@ import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlin
 import { Accordion } from "@mui/material";
 import { UserWallet } from "../../../../../constants/dto/wallet.dto";
 import { memo } from "react";
+import WalletDetails from './wallet-details.ts'
 
 interface UserWalletListItemProps {
   userWallet: UserWallet;
@@ -41,8 +42,9 @@ const UserWalletListItem = ({ userWallet }: UserWalletListItemProps) => {
           </Button>
         </Grid>
       </AccordionSummary>
-
-      <AccordionDetails></AccordionDetails>
+      <AccordionDetails>
+      <WalletDetails wallet={userWallet.wallet} />
+      </AccordionDetails>
     </Accordion>
   );
 };

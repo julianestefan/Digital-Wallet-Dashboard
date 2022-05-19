@@ -19,7 +19,7 @@ export interface Wallet {
 export interface UserWallet {
   id: number;
   walletId: number;
-  wallet?: Wallet;
+  wallet: Wallet;
   userId: number;
   isFavorite: boolean;
   createdAt: Date;
