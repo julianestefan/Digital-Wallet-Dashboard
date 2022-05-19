@@ -2,6 +2,9 @@ import { Test, TestingModule } from '@nestjs/testing';
 import { EtherscanService } from './etherscan.service';
 import * as api from 'etherscan-api';
 import { BadRequestException } from '@nestjs/common';
+import {HttpService} from '@nestjs/axios'
+
+jest.mock('@nestjs/axios')
 
 api.init = jest.fn(() => ({
   account: {
@@ -14,7 +17,7 @@ describe('EtherscanService', () => {
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
-      providers: [EtherscanService],
+      providers: [EtherscanService, HttpService],
     }).compile();
 
     service = module.get<EtherscanService>(EtherscanService);

@@ -2,10 +2,10 @@ import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { ethers } from 'ethers';
 import * as moment from 'moment';
+import { TransactionOrder } from '../etherscan/enum/transqction-order.enum';
 import { Repository } from 'typeorm';
 import {
   EtherscanService,
-  TransactionOrder,
 } from '../etherscan/etherscan.service';
 import { UpdateUserWalletFavoriteDTO } from './dto/update-user-wallet-favorite.dto';
 import { UserWallet } from './entities/user-wallet.entity';
