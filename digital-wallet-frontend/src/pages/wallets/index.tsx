@@ -38,7 +38,7 @@ function Wallets() {
   return (
     <Grid padding={5} container>
       <Grid container>
-        <AddWalletForm />
+        <AddWalletForm setUserWallets={setUserWallets} />
         <FormControlLabel
           control={
             <Checkbox

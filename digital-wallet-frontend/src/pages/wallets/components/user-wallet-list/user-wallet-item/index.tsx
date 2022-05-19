@@ -49,7 +49,7 @@ const UserWalletListItem = ({
         if(walletToUpdate){
           walletToUpdate.isFavorite = !walletToUpdate.isFavorite 
         }
-        console.log("En el update", newUserWallets)
+
         return newUserWallets;
       });
     }, [userWallet, setUserWallets])
