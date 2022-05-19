@@ -10,7 +10,7 @@ export const postUserWallet = async (data: CreateUserWalletDTO) => {
 }
 
 export const patchUserWalletIsfavorite = async (data: UpdateUserWalletFavoriteDTO) => {
-    return await privateAxiosInstance.patch('/wallet', data);
+    return await privateAxiosInstance.patch<UserWallet>('/wallet/is_favorite', data);
 }
 
 export const deleteUserWallet = async (id: number) => {

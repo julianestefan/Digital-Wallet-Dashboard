@@ -1,5 +1,5 @@
-import { Grid } from "@mui/material";
-import { useCallback, useEffect, useState } from "react";
+import { FormControlLabel, Grid, Checkbox } from "@mui/material";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import { ExchangeRate } from "../../constants/dto/exchange-rate.dto";
 import { UserWallet } from "../../constants/dto/wallet.dto";
 import { Currency } from "../../constants/enum/currency.enum";
@@ -10,14 +10,15 @@ import AddWalletForm from "./components/add-wallet-form";
 import UserWalletList from "./components/user-wallet-list";
 
 function Wallets() {
-  const [userWallets, setUseerWallets] = useState<UserWallet[]>([]);
+  const [userWallets, setUserWallets] = useState<UserWallet[]>([]);
   const [exchangeRates, setExchangeRates] = useState<ExchangeRate[]>([]);
+  const [onlyFavorites, setOnlyFavorites] = useState(false);
 
   const fetchUserWallets = useGlobalLoader(
     useCallback(async () => {
       const response = await getUserWallets();
       const ratesResponse = await getExchangeRageByBaseCurrency(Currency.ETH);
-      setUseerWallets(response.data);
+      setUserWallets(response.data);
       setExchangeRates(ratesResponse.data);
     }, [])
   );
@@ -26,13 +27,35 @@ function Wallets() {
     fetchUserWallets();
   }, [fetchUserWallets]);
 
+  const userWalletsToDisplay = useMemo(() => {
+    if(onlyFavorites) {
+      return userWallets.filter(userWallet => userWallet.isFavorite )
+    }else {
+      return userWallets;
+    }
+  }, [userWallets, onlyFavorites])
+
   return (
     <Grid padding={5} container>
       <Grid container>
         <AddWalletForm />
+        <FormControlLabel
+          control={
+            <Checkbox
+              onChange={(event) => setOnlyFavorites(event.target.checked)}
+              checked={onlyFavorites}
+            />
+          }
+          label="Only Favorites"
+        />
       </Grid>
       <Grid flexDirection="column" container>
-        <UserWalletList exchangeRates={exchangeRates} userWallets={userWallets} />
+        <UserWalletList
+          setExchangeRates={setExchangeRates}
+          exchangeRates={exchangeRates}
+          userWallets={userWalletsToDisplay}
+          setUserWallets={setUserWallets}
+        />
       </Grid>
     </Grid>
   );

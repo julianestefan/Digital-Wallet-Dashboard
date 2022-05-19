@@ -1,5 +1,5 @@
 import { memo } from "react";
-import { Controller, SubmitHandler, useForm } from "react-hook-form";
+import { Controller, useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as ethers from "ethers";
 import * as yup from "yup";
