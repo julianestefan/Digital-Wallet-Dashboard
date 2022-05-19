@@ -1,0 +1,18 @@
+.navbar {
+	height: 70px;
+	background-color: black;
+	display: flex;
+	justify-content: space-between;
+	color: #ffffff;
+	align-items: center;
+	padding-left: 20px;
+	padding-right: 20px;
+	font-size: 26px;
+}
+
+.links {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+}
