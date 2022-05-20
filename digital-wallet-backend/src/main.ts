@@ -27,7 +27,7 @@ async function bootstrap() {
   );
 
   app.useGlobalFilters(new QueryFailedErrorFilter)
-
+  app.enableCors();
   await app.listen(process.env.PORT);
 }
 bootstrap();

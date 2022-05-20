@@ -29,7 +29,7 @@ export class WalletController {
 
   @Post()
   @HttpCode(201)
-  @ApiOperation({ summary: 'Create user wallet Address data' })
+  @ApiOperation({ summary: 'Create user wallet from wallet address' })
   @ApiResponse({ type: UserWallet })
   async getWalletInfo(@Body() body: GetWalletParamsDTO, @Req() req) {
     return await this.walletService.createUserWallet(body.address, req.user.id);
@@ -37,7 +37,7 @@ export class WalletController {
 
   @Get()
   @HttpCode(200)
-  @ApiOperation({ summary: 'Create user wallet Address data' })
+  @ApiOperation({ summary: 'Get user wallets' })
   @ApiResponse({ type: UserWallet, isArray: true })
   async getUserWallets(@Req() req) {
     return await this.walletService.getUserWallets(req.user.id);
@@ -45,14 +45,14 @@ export class WalletController {
 
   @Patch('is_favorite')
   @HttpCode(200)
-  @ApiOperation({ summary: 'Create user wallet Address data' })
+  @ApiOperation({ summary: 'Update user wallet isFavorite field' })
   async updateUserWalletFavorite(@Body() body: UpdateUserWalletFavoriteDTO) {
     return await this.walletService.updateUserWalletFavorite(body);
   }
 
   @Delete(':id')
   @HttpCode(200)
-  @ApiOperation({ summary: 'Create user wallet Address data' })
+  @ApiOperation({ summary: 'Delete user wallet ' })
   async deleteUserWallet(@Param('id') id: number) {
     return await this.walletService.deleteUserWallet(id);
   }

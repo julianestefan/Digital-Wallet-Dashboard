@@ -29,7 +29,7 @@ import { ExchangeRateService } from './exchange-rate.service';
 export class ExchangeRateController {
   constructor(private readonly exchangeRateService: ExchangeRateService) {}
 
-  @Post('create')
+  @Post()
   @HttpCode(201)
   @ApiOperation({ summary: 'Create exchange rate' })
   @ApiResponse({ type: ExchangeRate })
