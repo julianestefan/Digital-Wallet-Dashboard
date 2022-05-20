@@ -36,7 +36,7 @@ function Wallets() {
   }, [userWallets, onlyFavorites])
 
   return (
-    <Grid padding={5} container>
+    <Grid padding={2} container>
       <Grid container>
         <AddWalletForm setUserWallets={setUserWallets} />
         <FormControlLabel

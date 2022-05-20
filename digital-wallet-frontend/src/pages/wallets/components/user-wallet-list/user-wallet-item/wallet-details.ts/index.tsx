@@ -110,7 +110,7 @@ function WalletDetails({
     <Grid>
       {wallet.isOld && <Alert severity="info"> Wallet is old </Alert>}
       <Grid container flexDirection="row" justifyContent="space-between">
-        <Grid item md={6} padding={2}>
+        <Grid item md={6} xs={12}  padding={2}>
           <Paper className={styles.Paper}>
             <Grid marginBottom={2} container justifyContent="flex-end">
               {getExchangeRateHeaderButtons()}
@@ -125,7 +125,7 @@ function WalletDetails({
             />
           </Paper>
         </Grid>
-        <Grid padding={2} item md={6}>
+        <Grid padding={2} item xs={12} md={6}>
           <Paper className={styles.Paper}>
             {selectedExchangeRate && (
               <>

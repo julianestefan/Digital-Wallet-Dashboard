@@ -4,6 +4,8 @@ import {
   Typography,
   Button,
   Grid,
+  Hidden,
+  Tooltip,
 } from "@mui/material";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import FavoriteIcon from "@mui/icons-material/Favorite";
@@ -16,6 +18,7 @@ import WalletDetails from "./wallet-details.ts";
 import { ExchangeRate } from "../../../../../constants/dto/exchange-rate.dto";
 import { patchUserWalletIsfavorite } from "../../../../../services/api/wallet";
 import { useGlobalLoader } from "../../../../../hooks/UseGlobalLoader";
+import styles from "./styles.module.css";
 
 interface UserWalletListItemProps {
   userWallet: UserWallet;
@@ -34,7 +37,7 @@ const UserWalletListItem = ({
 
   const submitIsFavorite = useGlobalLoader(
     useCallback(async () => {
-       await patchUserWalletIsfavorite({
+      await patchUserWalletIsfavorite({
         id: userWallet.id,
         isFavorite: !userWallet.isFavorite,
       });
@@ -43,11 +46,11 @@ const UserWalletListItem = ({
         const newUserWallets = [...prev];
 
         const walletToUpdate = newUserWallets.find(
-          (current) => (current.id === userWallet.id)
+          (current) => current.id === userWallet.id
         );
-        
-        if(walletToUpdate){
-          walletToUpdate.isFavorite = !walletToUpdate.isFavorite 
+
+        if (walletToUpdate) {
+          walletToUpdate.isFavorite = !walletToUpdate.isFavorite;
         }
 
         return newUserWallets;
@@ -60,9 +63,9 @@ const UserWalletListItem = ({
   }
 
   return (
-    <Accordion expanded={expanded} style={{ margin: "15px 0" }}>
+    <Accordion expanded={expanded} className={styles.Item}>
       <AccordionSummary
-        style={{ backgroundColor: "rgb(252, 249, 249)" }}
+        className={styles.Summary}
         aria-controls="panel1a-content"
         id="panel1a-header"
       >
@@ -72,8 +75,14 @@ const UserWalletListItem = ({
           justifyContent="space-between"
           flexDirection="row"
         >
-          <Typography>{userWallet.wallet?.address}</Typography>
-          <Grid>
+          <Grid item xs={10} overflow="hidden">
+            <Tooltip title={userWallet.wallet?.address}>
+              <Typography width="100px">
+                {userWallet.wallet?.address}
+              </Typography>
+            </Tooltip>
+          </Grid>
+          <Grid item xs={2}>
             <Button onClick={handleFavoriteChange}>
               {userWallet.isFavorite ? (
                 <FavoriteIcon />

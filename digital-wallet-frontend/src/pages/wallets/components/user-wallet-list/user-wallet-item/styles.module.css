@@ -1,0 +1,9 @@
+.Item {
+  margin: 10px 0;
+  width: 100%;
+}
+
+.Summary {
+  background-color: rgb(252, 249, 249);
+  padding: 0;
+}
