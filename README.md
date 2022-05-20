@@ -22,6 +22,7 @@ Development environment for backend is setted with docker compose.
 solution
 - Some testing. I have not too much experience in testing react apps. Of course I could have done it but surely it would have taken me a long time
 - I have build an endpoint to remove user wallets but I do not implement it on frontend because it was not a challenge requirement
+- Redux could be use to manage some state besides authentication state. Maybe exchange rates would be a nice option to apply it
 
 ## Backend
 
@@ -33,3 +34,4 @@ separated into two operations
 - I would have liked to make some e2e tests, but I did not have enough time. Specially production setup has some complexity.
 - I only tested services because i think with e2e tests you can test controllers in a better way
 - The delete user wallet endpoint only delete selected walle, but I would be nice to delete associated wallet if none other user wallet references it
+- I am using the synchronized option in typeorm configuration. This is not the best for production environments because it could cause data inconsistency. I took this approach only for simplicity and it did not generate any problem when deploying the app
