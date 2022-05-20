@@ -5,7 +5,7 @@
 
 # Overview
 
-Main idea is to allow users to create an account and to select ethereum wallets and hook them to their account. The wallet balances
+The main idea is to allow users to create an account and to select ethereum wallets and hook them to their account. The wallet balances
 stored in the app DB are updated every 10 seconds by a scheduled job. 
 Frontend app is hosted by vercel while backend is hosted by heroku
 Development environment for backend is setted with docker compose. 
