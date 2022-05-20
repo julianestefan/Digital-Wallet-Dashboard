@@ -3,5 +3,5 @@ export enum Path {
   signup = "/signup",
   signin = "/signin",
   wallets= '/wallets',
-  notfound = '404'
+  notfound = '*'
 }
