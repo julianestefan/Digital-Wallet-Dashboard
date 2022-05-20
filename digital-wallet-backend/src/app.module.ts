@@ -1,10 +1,29 @@
 import { Module } from '@nestjs/common';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
+import { APP_GUARD } from '@nestjs/core';
+
+import { UserModule } from './user/user.module';
+import { WalletModule } from './wallet/wallet.module';
+import { DatabaseModule } from './database/database.module';
+import { GlobalGuard } from './core/guards/global.guard';
+import { ExchangeRateModule } from './exchange-rate/exchange-rate.module';
+import { EtherscanModule } from './etherscan/etherscan.module';
+import { ScheduleModule } from '@nestjs/schedule';
 
 @Module({
-  imports: [],
-  controllers: [AppController],
-  providers: [AppService],
+  imports: [
+    WalletModule,
+    UserModule,
+    ExchangeRateModule,
+    DatabaseModule,
+    EtherscanModule,
+    ScheduleModule.forRoot()
+  ],
+  controllers: [],
+  providers: [
+    {
+      provide: APP_GUARD,
+      useClass: GlobalGuard,
+    },
+  ],
 })
 export class AppModule {}
