@@ -32,10 +32,10 @@ export interface CustomRouteProps extends RouteProps {
 
 export const routes: Array<Route> = [
   new Route({ path: Path.index, component: Landing, exact: true }),
-  new Route({ component: SingUp, path: Path.signup, exact: true }, false),
-  new Route({ component: LogIn, path: Path.signin, exact: true }, false),
+  new Route({ component: SingUp, path: Path.signup, exact: true }),
+  new Route({ component: LogIn, path: Path.signin, exact: true }),
   new Route({ component: Wallets, path: Path.wallets, exact: true }, true),
-  new Route({ path: Path.notfound, component: NotFound }),
+  new Route({ path: Path.notfound, component: NotFound, exact: true }),
 ];
 
 export const createUserRoutes = (user?: User) => {
