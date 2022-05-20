@@ -39,7 +39,7 @@ export class UserController {
     return await this.userService.login(req.user);
   }
 
-  @Post('create')
+  @Post()
   @Public()
   @HttpCode(201)
   @ApiOperation({ summary: 'Create user' })
