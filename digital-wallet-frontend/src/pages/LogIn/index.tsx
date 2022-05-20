@@ -1,6 +1,6 @@
 import { Button, Grid, Paper, TextField, Typography } from "@mui/material";
 import { useForm, Controller, SubmitHandler } from "react-hook-form";
-import { useHistory } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { actionLogin } from '../../redux/actions';
@@ -48,7 +48,7 @@ const LogIn = () => {
     <Grid container justifyContent="center">
       <Paper elevation={10} style={paperStyle}>
         <Typography align="center" variant="h4" margin={4}>
-          Sign Inx
+          Sign In
         </Typography>
         <form onSubmit={handleSubmit(onSubmit)}>
           <Controller
@@ -98,6 +98,7 @@ const LogIn = () => {
             Sign in
           </Button>
         </form>
+        <Link to={Path.signup} > Don have account? Create one </Link>
       </Paper>
     </Grid>
   );
