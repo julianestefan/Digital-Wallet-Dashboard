@@ -21,6 +21,7 @@ Development environment for backend is setted with docker compose.
 - I had a problem with typescript and redux thunk. so i use some ts ignore statements to allow me to go forward, but of course is not the best 
 solution
 - Some testing. I have not too much experience in testing react apps. Of course I could have done it but surely it would have taken me a long time
+- I have build an endpoint to remove user wallets but I do not implement it on frontend because it was not a challenge requirement
 
 ## Backend
 
@@ -31,3 +32,4 @@ this is creating a separate process responsible for that update.
 separated into two operations
 - I would have liked to make some e2e tests, but I did not have enough time. Specially production setup has some complexity.
 - I only tested services because i think with e2e tests you can test controllers in a better way
+- The delete user wallet endpoint only delete selected walle, but I would be nice to delete associated wallet if none other user wallet references it
