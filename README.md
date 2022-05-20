@@ -18,7 +18,7 @@ Development environment for backend is setted with docker compose.
 
 ## Frontend
 - More complex routing 
-- I had a problem with typescript and redux thunk. so i use some ts ignore statements to allow me to go forward, but of course is not the better 
+- I had a problem with typescript and redux thunk. so i use some ts ignore statements to allow me to go forward, but of course is not the best 
 solution
 - Some testing. I have not too much experience in testing react apps. Of course I could have done it but surely it would have taken me a long time
 
