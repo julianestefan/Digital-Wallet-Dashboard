@@ -7,6 +7,7 @@ import NotFound from "../../../pages/404";
 import { Path } from "../../../constants/enum/path.enum";
 import { User } from "../../../constants/dto/user.dto";
 import Wallets from "../../../pages/wallets";
+import LogIn from "../../../pages/LogIn";
 
 export class Route {
   constructor(
@@ -30,14 +31,15 @@ export interface CustomRouteProps extends RouteProps {
 }
 
 export const routes: Array<Route> = [
-  new Route({ path: Path.index, component: Landing, exact: true }, false),
+  new Route({ path: Path.index, component: Landing, exact: true }),
   new Route({ component: SingUp, path: Path.signup, exact: true }, false),
-  new Route({ component: Wallets, path: Path.wallets, exact: true }),
+  new Route({ component: LogIn, path: Path.signin, exact: true }, false),
+  new Route({ component: Wallets, path: Path.wallets, exact: true }, true),
   new Route({ path: Path.notfound, component: NotFound }),
 ];
 
 export const createUserRoutes = (user?: User) => {
   const userRoutes = routes.filter((route) => user || !route.isPrivate);
-  
+
   return userRoutes;
 };

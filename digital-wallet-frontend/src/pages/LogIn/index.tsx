@@ -41,14 +41,14 @@ const LogIn = () => {
   const onSubmit: SubmitHandler<FormData> = async (data) => {
     const { username, password } = data;
     // @ts-ignore
-    dispatch(actionLogin(username, password, () => history.push(Path.index)));
+    dispatch(actionLogin(username, password, () => history.push(Path.wallets)));
   };
-  
+
   return (
     <Grid container justifyContent="center">
       <Paper elevation={10} style={paperStyle}>
         <Typography align="center" variant="h4" margin={4}>
-          Login
+          Sign Inx
         </Typography>
         <form onSubmit={handleSubmit(onSubmit)}>
           <Controller
@@ -95,7 +95,7 @@ const LogIn = () => {
             style={btnstyle}
             fullWidth
           >
-            Iniciar Sesión
+            Sign in
           </Button>
         </form>
       </Paper>

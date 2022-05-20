@@ -1,5 +1,4 @@
 import { useEffect, useMemo, useState } from "react";
-import { BrowserRouter } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { Grid, Snackbar } from "@mui/material";
 
@@ -29,7 +28,7 @@ function App() {
   const userRoutes = useMemo(() => createUserRoutes(user), [user]);
 
   return (
-    <BrowserRouter basename={process.env.PUBLIC_URL}>
+    <>
       {loading && <Loader />}
       {!initializing && (
         <>
@@ -47,7 +46,7 @@ function App() {
       >
         <Alert severity={snackbar?.messagetype}>{snackbar?.action}</Alert>
       </Snackbar>
-    </BrowserRouter>
+    </>
   );
 }
 

@@ -1,4 +1,3 @@
-import { memo } from 'react';
 import { Route } from 'react-router-dom';
 
 import { Route as RouteObject } from '../routes/routes'
@@ -8,7 +7,6 @@ interface RouterProps {
 }
 
 const Router = ({ userRoutes }: RouterProps) => {
-
 	const builRoutes = () => {
 		return userRoutes.map(route => (
 			<Route
@@ -17,8 +15,8 @@ const Router = ({ userRoutes }: RouterProps) => {
 			/>
 		))
 	};
-	
+
 	return <>{builRoutes()}</>;
 };
 
-export default memo(Router);
+export default Router;

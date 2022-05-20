@@ -64,7 +64,7 @@ const CreateUser = () => {
     >
       <Paper elevation={10} style={paperStyle}>
         <Typography align="center" variant="h4" margin={2}>
-          Crear usuario
+          Create account
         </Typography>
         <form onSubmit={handleSubmit(onSubmit)}>
           <Controller
@@ -73,8 +73,7 @@ const CreateUser = () => {
             defaultValue=""
             render={({ field }) => (
               <TextField
-                label="Nombre de usuario"
-                placeholder="Ingrese el nombre de usuario"
+                label="Username"
                 fullWidth
                 margin="normal"
                 {...field}
@@ -92,8 +91,7 @@ const CreateUser = () => {
             defaultValue=""
             render={({ field }) => (
               <TextField
-                label="Contraseña"
-                placeholder="Ingrese su contraseña"
+                label="Password"
                 type="password"
                 fullWidth
                 margin="normal"
@@ -113,7 +111,7 @@ const CreateUser = () => {
             style={btnstyle}
             fullWidth
           >
-            Crear usuario
+            Create account
           </Button>
         </form>
       </Paper>

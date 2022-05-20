@@ -4,7 +4,6 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import * as ethers from "ethers";
 import * as yup from "yup";
 import { Button, Grid, TextField, Typography } from "@mui/material";
-import { useGlobalLoader } from "../../../../hooks/UseGlobalLoader";
 import { postUserWallet } from "../../../../services/api/wallet";
 import styles from "./styles.module.css";
 import { UserWallet } from "../../../../constants/dto/wallet.dto";
